@@ -14,6 +14,8 @@ public class PlaceOrderRequest {
 
     private List<PlaceOrderItemRequest> items = new ArrayList<>();
 
+    private CustomerRequest customerRequest;
+
     @Data
     public static class PlaceOrderItemRequest {
 
@@ -26,5 +28,35 @@ public class PlaceOrderRequest {
         private String name;
 
         private double price;
+    }
+
+    @Data
+    public static class CustomerRequest {
+
+        private String firstName;
+
+        private String middleName;
+
+        private String lastName;
+
+        private String address1;
+
+        private String address2;
+
+        private String address3;
+
+        private String contactNumber;
+
+        private String mobileNumber;
+
+        private String pinCode;
+
+        private String district;
+
+        private String state;
+
+        private String additionalComment;
+
+        private String addressType;
     }
 }

@@ -21,8 +21,8 @@ public class OrderStatus {
     @JdbcType(VarcharJdbcType.class)
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="cart_id")
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Order.class)
+    @JoinColumn(name="order_id", referencedColumnName = "id")
     private Order order;
 
     @Column(name = "sort_order", nullable = false)

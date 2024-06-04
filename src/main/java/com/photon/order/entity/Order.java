@@ -1,5 +1,6 @@
 package com.photon.order.entity;
 
+import com.photon.customer.entity.Customer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,15 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+
 @Entity(name = "Order")
-@Table(name = "order")
+@Table(name = "b_order")
 @Getter
 @Setter
 public class Order implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "id", nullable = false)
     @JdbcType(VarcharJdbcType.class)
     private UUID id;
 
@@ -28,6 +30,13 @@ public class Order implements Serializable {
     private List<OrderItem> items = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "order")
-    @JoinColumn(name = "order_id", referencedColumnName = "id")
     private List<OrderStatus> statuses = new ArrayList<>();
+
+    @Column(name = "order_number", nullable = false, unique = true)
+    @Basic(optional = false)
+    private String orderNumber;
+
+    @OneToOne(fetch = FetchType.EAGER, targetEntity = Customer.class)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private Customer customer;
 }
