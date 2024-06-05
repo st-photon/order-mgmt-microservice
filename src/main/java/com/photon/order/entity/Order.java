@@ -11,6 +11,7 @@ import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -62,4 +63,12 @@ public class Order implements Serializable {
     @Column(name="updated_at")
     @UpdateTimestamp
     private LocalDate updatedAt;
+
+    @Column(name = "order_placed_by", nullable = false)
+    @Basic(optional = false)
+    private int orderPlacedBy;
+
+    @Column(name = "order_placed_at", nullable = false)
+    @Basic(optional = false)
+    private LocalDateTime orderPlacedAt;
 }

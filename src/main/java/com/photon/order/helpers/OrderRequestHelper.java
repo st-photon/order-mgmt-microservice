@@ -12,6 +12,7 @@ import com.photon.order.utils.OrderUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,8 @@ public class OrderRequestHelper {
         order.setSubTotal(placeOrderRequest.getSubTotal());
         order.setGrandTotal(placeOrderRequest.getSubTotal());
         order.setTotalQty(placeOrderRequest.getTotalQty());
+        order.setOrderPlacedAt(LocalDateTime.now());
+        order.setOrderPlacedBy(placeOrderRequest.getUserId());
         return order;
     }
 
