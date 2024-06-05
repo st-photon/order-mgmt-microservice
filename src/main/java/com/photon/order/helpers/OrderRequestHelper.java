@@ -25,6 +25,9 @@ public class OrderRequestHelper {
         order.setOrderNumber(OrderUtils.generateOrderNumber());
         order.setItems(placeOrderRequest.getItems().stream().map(this::createOrderItem).toList());
         order.setCustomer(createCustomer(placeOrderRequest.getCustomerRequest()));
+        order.setSubTotal(placeOrderRequest.getSubTotal());
+        order.setGrandTotal(placeOrderRequest.getSubTotal());
+        order.setTotalQty(placeOrderRequest.getTotalQty());
         return order;
     }
 
@@ -50,7 +53,7 @@ public class OrderRequestHelper {
     private OrderItem createOrderItem(PlaceOrderRequest.PlaceOrderItemRequest item) {
         final OrderItem orderItem = new OrderItem();
         orderItem.setBrand(item.getBrand());
-        orderItem.setName(item.getName());
+        orderItem.setPrice(item.getPrice());
         orderItem.setDescription(item.getDescription());
         orderItem.setName(item.getName());
         return orderItem;

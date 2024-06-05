@@ -43,6 +43,18 @@ public class Order implements Serializable {
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
 
+    @Column(name = "sub_total", nullable = false)
+    @Basic(optional = false)
+    private Double subTotal;
+
+    @Column(name = "grand_total", nullable = false)
+    @Basic(optional = false)
+    private Double grandTotal;
+
+    @Column(name = "total_qty", nullable = false)
+    @Basic(optional = false)
+    private Long totalQty;
+
     @Column(name="created_at")
     @CreationTimestamp
     private LocalDate createdAt;
