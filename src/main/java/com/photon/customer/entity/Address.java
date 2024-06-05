@@ -8,7 +8,7 @@ import lombok.Setter;
 @Embeddable
 @Getter
 @Setter
-public class CustomerShippingAddress {
+public class Address {
 
     @Column(name = "address_1", nullable = false)
     @Basic(optional = false)
@@ -20,9 +20,9 @@ public class CustomerShippingAddress {
     @Column(name = "address_3")
     private String address3;
 
-    @Column(name = "pin_code", nullable = false)
+    @Column(name = "zip_code", nullable = false)
     @Basic(optional = false)
-    private String pinCode;
+    private String zipCode;
 
     @Column(name = "district", nullable = false)
     @Basic(optional = false)
@@ -41,5 +41,6 @@ public class CustomerShippingAddress {
 
     @Column(name = "address_type", nullable = false)
     @Basic(optional = false)
+    @Enumerated(EnumType.STRING)
     private AddressType addressType;
 }

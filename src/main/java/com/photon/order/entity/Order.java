@@ -4,10 +4,13 @@ import com.photon.customer.entity.Customer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.JdbcType;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -36,7 +39,15 @@ public class Order implements Serializable {
     @Basic(optional = false)
     private String orderNumber;
 
-    @OneToOne(fetch = FetchType.EAGER, targetEntity = Customer.class)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Customer.class)
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
+
+    @Column(name="created_at")
+    @CreationTimestamp
+    private LocalDate createdAt;
+
+    @Column(name="updated_at")
+    @UpdateTimestamp
+    private LocalDate updatedAt;
 }

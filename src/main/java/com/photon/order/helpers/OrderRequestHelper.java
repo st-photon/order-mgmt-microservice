@@ -1,8 +1,9 @@
 package com.photon.order.helpers;
 
+import com.photon.core.AddressType;
 import com.photon.core.OrderStatusEnum;
 import com.photon.customer.entity.Customer;
-import com.photon.customer.entity.CustomerShippingAddress;
+import com.photon.customer.entity.Address;
 import com.photon.order.entity.Order;
 import com.photon.order.entity.OrderItem;
 import com.photon.order.entity.OrderStatus;
@@ -29,19 +30,20 @@ public class OrderRequestHelper {
 
     private Customer createCustomer(PlaceOrderRequest.CustomerRequest customerRequest) {
         final Customer customer = new Customer();
-        customer.setFirstName(customer.getFirstName());
+        customer.setFirstName(customerRequest.getFirstName());
         customer.setLastName(customerRequest.getLastName());
         customer.setMobileNumber(customerRequest.getMobileNumber());
-        final CustomerShippingAddress customerShippingAddress = new CustomerShippingAddress();
-        customerShippingAddress.setAddress1(customerRequest.getAddress1());
-        customerShippingAddress.setComment(customerRequest.getAdditionalComment());
-        customerShippingAddress.setContactNumber(customerRequest.getContactNumber());
-        customerShippingAddress.setAddress2(customerRequest.getAddress2());
-        customerShippingAddress.setAddress3(customerRequest.getAddress3());
-        customerShippingAddress.setPinCode(customerRequest.getPinCode());
-        customerShippingAddress.setDistrict(customerShippingAddress.getDistrict());
-        customerShippingAddress.setState(customerShippingAddress.getState());
-        customer.setCustomerShippingAddress(customerShippingAddress);
+        final Address address = new Address();
+        address.setAddress1(customerRequest.getAddress1());
+        address.setComment(customerRequest.getAdditionalComment());
+        address.setContactNumber(customerRequest.getContactNumber());
+        address.setAddress2(customerRequest.getAddress2());
+        address.setAddress3(customerRequest.getAddress3());
+        address.setZipCode(customerRequest.getZipCode());
+        address.setDistrict(customerRequest.getDistrict());
+        address.setState(customerRequest.getState());
+        address.setAddressType(AddressType.getByName(customerRequest.getAddressType()));
+        customer.setShippingAddress(address);
         return customer;
     }
 

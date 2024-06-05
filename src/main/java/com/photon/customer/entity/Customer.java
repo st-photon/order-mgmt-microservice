@@ -32,5 +32,5 @@ public class Customer {
     private String mobileNumber;
 
     @Embedded
-    private CustomerShippingAddress customerShippingAddress;
+    private Address shippingAddress;
 }

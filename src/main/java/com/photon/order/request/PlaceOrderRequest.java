@@ -49,7 +49,7 @@ public class PlaceOrderRequest {
 
         private String mobileNumber;
 
-        private String pinCode;
+        private String zipCode;
 
         private String district;
 
