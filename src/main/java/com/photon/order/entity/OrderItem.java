@@ -37,4 +37,8 @@ public class OrderItem implements Serializable {
     @Basic(optional = false)
     private double price;
 
+    @Column(name = "qty", nullable = false)
+    @Basic(optional = false)
+    private Long qty;
+
 }

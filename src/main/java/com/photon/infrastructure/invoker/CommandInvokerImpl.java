@@ -17,7 +17,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class CommandInvokerImpl implements CommandInvoker {
 
-    private final ApplicationContext applicationContext;
+    private final CommandInvokeExecutor commandInvokeExecutor;
 
     @Override
     public CommandResult invokeCommand(CommandRequest request){
@@ -27,7 +27,6 @@ public class CommandInvokerImpl implements CommandInvoker {
         Class<?> className = commandClasses.stream()
                 .filter(c -> c.getAnnotation(CommandRequestType.class).value().equals(requestClassName))
                 .findAny().orElseThrow(() -> new RuntimeException("Developer error!!! no command handler found to process the request"));
-        final Command command = this.applicationContext.getBean(className.getSimpleName(), Command.class);
-        return command.execute(request);
+        return commandInvokeExecutor.executeCommand(className, request);
     }
 }

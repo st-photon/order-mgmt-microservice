@@ -25,7 +25,7 @@ public class OrderQueryServiceImpl extends BaseService implements OrderQueryServ
     public List<Order> fetchAllOrders(int userId) {
         GetOrderListCommandRequest getOrderListCommandRequest = new GetOrderListCommandRequest();
         getOrderListCommandRequest.setUserId(userId);
-        CommandResult commandResult = getCommandInvoker().invokeCommand(getOrderListCommandRequest);
+        CommandResult commandResult = invokeCommand(getOrderListCommandRequest);
         return (List<Order>) commandResult.getResponse();
     }
 
