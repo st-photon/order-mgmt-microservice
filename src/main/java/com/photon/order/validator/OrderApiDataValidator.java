@@ -1,7 +1,6 @@
 package com.photon.order.validator;
 
-import com.photon.infrastructure.AbstractBaseDataValidator;
-import com.photon.infrastructure.exceptions.ApiDataValidationException;
+import com.photon.infrastructure.validator.AbstractBaseDataValidator;
 import com.photon.infrastructure.exceptions.model.ApiDataError;
 import com.photon.order.request.PlaceOrderRequest;
 import lombok.RequiredArgsConstructor;

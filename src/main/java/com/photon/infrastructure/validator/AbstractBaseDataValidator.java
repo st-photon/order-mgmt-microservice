@@ -1,4 +1,4 @@
-package com.photon.infrastructure;
+package com.photon.infrastructure.validator;
 
 import com.photon.infrastructure.exceptions.ApiDataValidationException;
 import com.photon.infrastructure.exceptions.model.ApiDataError;

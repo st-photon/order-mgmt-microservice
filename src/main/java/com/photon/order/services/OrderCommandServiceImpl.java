@@ -1,6 +1,8 @@
 package com.photon.order.services;
 
 import com.photon.core.Response;
+import com.photon.infrastructure.invoker.CommandInvoker;
+import com.photon.infrastructure.services.BaseService;
 import com.photon.order.entity.Order;
 import com.photon.order.helpers.OrderRequestHelper;
 import com.photon.order.repository.OrderRepository;
@@ -14,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class OrderCommandServiceImpl implements OrderCommandService {
+public class OrderCommandServiceImpl extends BaseService implements OrderCommandService {
 
     private final OrderRepository orderRepository;
 
