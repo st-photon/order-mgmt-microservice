@@ -16,7 +16,6 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Slf4j
 @Service
-@Transactional(readOnly = true)
 public class OrderQueryServiceImpl extends BaseService implements OrderQueryService{
 
     private final OrderRepository orderRepository;
@@ -31,6 +30,7 @@ public class OrderQueryServiceImpl extends BaseService implements OrderQueryServ
 
     @Override
     public Order fetchOrder(UUID orderId) {
+        System.out.println("hellooooooooooooooooo");
         return orderRepository.findByOrderId(orderId);
     }
 }

@@ -9,6 +9,7 @@ import com.photon.order.entity.OrderItem;
 import com.photon.order.entity.OrderStatus;
 import com.photon.order.request.PlaceOrderRequest;
 import com.photon.order.utils.OrderUtils;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +19,7 @@ import java.util.List;
 
 @Component
 @Slf4j
+@RequiredArgsConstructor
 public class OrderRequestHelper {
 
     public Order newInstance(PlaceOrderRequest placeOrderRequest) {
