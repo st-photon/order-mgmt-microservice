@@ -43,7 +43,6 @@ public class OrderCommandServiceImplTest {
         Mockito.doNothing().when(orderApiDataValidator).validatePlaceOrderRequestData(Mockito.any());
         Order order = new Order();
         order.setId(UUID.fromString(orderId));
-        //Mockito.doReturn(order).when(orderRequestHelper).newInstance(any());
         Mockito.when(orderRequestHelper.newInstance(any())).thenReturn(order);
         Mockito.when(orderRepository.saveAndFlush(any())).thenReturn(order);
 
@@ -52,7 +51,7 @@ public class OrderCommandServiceImplTest {
 
         //assert
         verify(orderApiDataValidator, times(1)).validatePlaceOrderRequestData(any());
-        verify(orderRequestHelper, times(1)).newInstance(any());
+        Mockito.verify(orderRequestHelper, times(1)).newInstance(any());
         Assertions.assertEquals(orderId, String.valueOf(response.getId()));
     }
 }
