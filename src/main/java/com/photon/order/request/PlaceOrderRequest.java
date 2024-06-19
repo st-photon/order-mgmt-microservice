@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 public class PlaceOrderRequest {
@@ -21,15 +22,9 @@ public class PlaceOrderRequest {
     @Data
     public static class PlaceOrderItemRequest {
 
-        private String brand;
+        private UUID productId;
 
         private Long qty;
-
-        private String description;
-
-        private String name;
-
-        private double price;
     }
 
     @Data

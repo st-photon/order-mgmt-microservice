@@ -1,5 +1,6 @@
 package com.photon.order.services;
 
+import com.photon.consumers.product.ProductConsumer;
 import com.photon.core.Response;
 import com.photon.infrastructure.invoker.CommandInvoker;
 import com.photon.infrastructure.services.BaseService;

@@ -1,5 +1,7 @@
 package com.photon.order.helpers;
 
+import com.photon.consumers.product.ProductConsumer;
+import com.photon.consumers.product.ProductDTO;
 import com.photon.core.AddressType;
 import com.photon.core.OrderStatusEnum;
 import com.photon.customer.entity.Customer;
@@ -21,6 +23,8 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 public class OrderRequestHelper {
+
+    private final ProductConsumer productConsumer;
 
     public Order newInstance(PlaceOrderRequest placeOrderRequest) {
         final Order order = new Order();
@@ -56,11 +60,13 @@ public class OrderRequestHelper {
     }
 
     private OrderItem createOrderItem(PlaceOrderRequest.PlaceOrderItemRequest item) {
+        final ProductDTO productDTO = this.productConsumer.getProductById(item.getProductId());
         final OrderItem orderItem = new OrderItem();
-        orderItem.setBrand(item.getBrand());
-        orderItem.setPrice(item.getPrice());
-        orderItem.setDescription(item.getDescription());
-        orderItem.setName(item.getName());
+        orderItem.setBrand(productDTO.getBrand());
+        orderItem.setPrice(productDTO.getPrice());
+        orderItem.setDescription(productDTO.getDescription());
+        orderItem.setName(productDTO.getName());
+        orderItem.setQty(item.getQty());
         return orderItem;
     }
 
