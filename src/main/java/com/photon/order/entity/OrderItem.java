@@ -41,4 +41,7 @@ public class OrderItem implements Serializable {
     @Basic(optional = false)
     private Long qty;
 
+    @Column(name = "sku")
+    private String sku;
+
 }

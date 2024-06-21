@@ -1,5 +1,6 @@
 package com.photon.order.entity;
 
+import com.photon.core.TxnStatus;
 import com.photon.customer.entity.Customer;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -71,4 +72,9 @@ public class Order implements Serializable {
     @Column(name = "order_placed_at", nullable = false)
     @Basic(optional = false)
     private LocalDateTime orderPlacedAt;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "saga_txn_status", nullable = false)
+    @Basic(optional = false)
+    private TxnStatus txnStatus;
 }

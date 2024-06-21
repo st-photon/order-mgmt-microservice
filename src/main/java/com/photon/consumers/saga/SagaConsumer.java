@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Map;
 
-
+@FunctionalInterface
 @FeignClient(name = "saga-orchestration-service")
 public interface SagaConsumer {
 
